@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
-import { ProfileUserService } from "../services/ProfileUserService";
+import { Request, Response } from 'express';
+import { ProfileUserService } from '../services/ProfileUserService';
 
-import { io } from "../app";
+import { io } from '../app';
 
 class ProfileUserController {
-    async handle(request: Request, response: Response) {
+    async handle (request: Request, response: Response) {
         const { user_id } = request;
 
         const service = new ProfileUserService();

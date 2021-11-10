@@ -1,6 +1,6 @@
-import axios from "axios";
-import prismaClient from "../prisma";
-import { sign } from "jsonwebtoken";
+import axios from 'axios';
+import prismaClient from '../prisma';
+import { sign } from 'jsonwebtoken';
 
 /**
  * Receber code
@@ -23,8 +23,8 @@ interface IUserResponse {
 }
 
 class AuthenticateUserService {
-    async execute(code: string) {
-        const url = "https://github.com/login/oauth/access_token";
+    async execute (code: string) {
+        const url = 'https://github.com/login/oauth/access_token';
 
         const { data: accessTokenResponse } = await axios.post<IAccessTokenResponse>(url, null, {
             params: {
@@ -33,11 +33,11 @@ class AuthenticateUserService {
                 code,
             },
             headers: {
-                "Accept": "application/json"
+                'Accept': 'application/json'
             }
         })
 
-        const response = await axios.get<IUserResponse>("https://api.github.com/user", {
+        const response = await axios.get<IUserResponse>('https://api.github.com/user', {
             headers: {
                 authorization: `Bearer ${accessTokenResponse.access_token}`
             }
@@ -73,7 +73,7 @@ class AuthenticateUserService {
             process.env.JWT_SECRET,
             {
                 subject: user.id,
-                expiresIn: "1d"
+                expiresIn: '1d'
             }
         );
 
