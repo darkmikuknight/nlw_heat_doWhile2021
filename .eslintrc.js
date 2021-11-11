@@ -46,6 +46,10 @@ module.exports = {
         'no-undef': 'error',
         'prefer-const': 'error',
         'no-plusplus': 'error',
+        'no-console': 'warn',
+        'keyword-spacing': ['error', {
+            'before': true
+        }],
         'no-multiple-empty-lines': [
             'error',
             {
